@@ -1,6 +1,7 @@
 <script setup>
 import { ref, watch } from "vue";
 import q from "./data/quizzes.json";
+import Card from "./components/Card.vue";
 
 const quizzes = ref(q);
 const search = ref("");
@@ -23,22 +24,8 @@ watch(search, () => {
         v-model.trim="search"
       />
     </section>
-    <section class="flex justify-between gap-10">
-      <div
-        v-for="v in quizzes"
-        :key="v.id"
-        class="bg-pink-100 overflow-clip grid relative rounded-lg h-[230px] w-[300px] outline-sky-500/30 outline-offset-2 outline-4 hover:outline hover:cursor-pointer"
-      >
-        <img :src="v.img" :alt="v.name" />
-        <div
-          class="bg-gray-200 text-black/50 absolute bottom-0 w-full h-fit py-3 px-5 text-start place-self-end"
-        >
-          <h1 class="font-semibold text-lg">
-            {{ v.name }}
-          </h1>
-          <p>{{ v.questions.length }} Questions</p>
-        </div>
-      </div>
+    <section class="flex gap-28">
+      <Card v-for="quiz in quizzes" :key="quiz.id" :quiz="quiz" />
     </section>
   </main>
 </template>
