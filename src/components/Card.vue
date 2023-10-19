@@ -1,11 +1,12 @@
 <script setup>
-const { quiz } = defineProps(["quiz"]);
 import { RouterLink } from "vue-router";
+
+const { quiz } = defineProps(["quiz"]);
 </script>
 <template>
-  <RouterLink :to="`/Quiz/${quiz.name}`">
+  <RouterLink :to="`/Quiz/${quiz.id}`">
     <div
-      class="bg-pink-100 overflow-clip grid relative rounded-lg h-[230px] w-[300px] outline-sky-500/30 outline-offset-2 outline-4 hover:outline hover:cursor-pointer"
+      class="overflow-clip grid relative rounded-lg h-[230px] w-[300px] outline-sky-500/50 outline-offset-2 outline-4 hover:outline hover:cursor-pointer"
     >
       <img :src="quiz.img" :alt="quiz.name" />
       <div
